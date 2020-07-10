@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <style>
+
+        .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+            background: #D96200;
+            color: #fff;
+        }
+
+        .table .thead-light th{
+            background: #D96200;
+            border-color: #dee2e6;
+            color: #fff;
+            text-align: left;
+        }
+
+        .table tbody{
+            background-color: #fff;
+            text-align: left;
+        }
+
+        .table td, .table th{
+            padding: 0.25rem;
+        }
+
+        .bgColor {
+            background: #D96200;
+        }
+
+            .bgColor button {
+                color: #fff;
+                ;
+            }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #f0ad4e;
+            border-color: #eea236;
+        }
+
+        .btn.focus, .btn:focus {
+            box-shadow: 0 0 0 0 rgba(0,123,255,.25);
+        }
+
+        .custom-control-input:checked ~ .custom-control-label::before {
+            color: #fff;
+            background-color: #d58512;
+            border-color: #985f0d;
+        }
+
+        .card-header {
+            padding: 0 0;
+        }
+
+        fieldset {
+            border: 1px solid #CDCDCD;
+            margin: auto;            
+            -moz-border-radius: 7px;
+            -webkit-border-radius: 7px;
+            border-radius: 7px;
+            padding: 5px 15px 5px 15px;
+        }
+        
+        .content {
+            background: #f7f5f5;
+            height: 100vh;
+        }
+
+        .content-aux {
+            background: #f3ebeb
+        }
+        
+    </style>
+</head>
+<body>    
+    <ul class="nav nav-pills nav-fill mx-auto" id="pills-tab" role="tablist" style="width: 800px;">
+        <li class="nav-item">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Parâmetro</a>
+        </li>
+        <!-- <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Histórico</a>
+        </li>         -->
+    </ul>        
+    <div class="tab-content mx-auto content pt-2" id="pills-tabContent" style="width: 800px;">
+        <!-- PARAMETROS -->
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="col-12">
+                <fieldset>                    
+                    <div class="col-12">
+                        <form style="display: none;">                        
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationDefault04">Empresa</label>
+                                    <select class="custom-select" id="validationDefault04" required>
+                                        <option selected disabled value="">Selecione...</option>
+                                        <option>Liberty</option>
+                                    </select>
+                                </div>                          
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationDefault03">Parâmetro</label>
+                                    <div class="input-group is-invalid">
+                                        <div class="custom-file">
+                                            <select class="form-control" id="exampleFormControlSelect1">
+                                                <option selected disabled value="">Selecione...</option>
+                                                <option>Estimatica Mecãnica</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary btn-outline-secondary" type="button">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                                                
+                          </form>                    
+                    </div>
+                    <div class="col-12">
+                        <div class="accordion" id="accordionExample">
+                            <!-- Card  -->
+                            <div class="card">
+                                <div class="card-header bgColor" id="headingOne">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Estimativa de Mecânica
+                                        </button>
+                                    </h2>
+                                </div>
+    
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <p class="lead text-center font-weight-bolder">
+                                                    Habilitar a Estimativa de Mecânica "E" no tabela de peças do orçamento
+                                                </p>
+                                                <div class="custom-control custom-switch text-center">
+                                                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                                    <label class="custom-control-label" for="customSwitch1">Não / Sim</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-center mt-4 mb-n2">
+                                                <button type="button" class="btn btn-primary btnAuda btn-sm">Salvar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fim Card  -->
+                            <!-- Card  -->
+                            <div class="card">
+                                <div class="card-header bgColor" id="headingTwo">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Mão de Obra de Reparação
+                                        </button>
+                                    </h2>
+                                </div>
+    
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <p class="lead text-center font-weight-bolder">
+                                                    Valor de referência para mão de obra de reparação
+                                                </p>
+                                                <div class="custom-control custom-switch">
+                                                    <select multiple class="form-control text-center" id="exampleFormControlSelect1">
+                                                        <option value="Horas">Horas</option>
+                                                        <option value="Minutos" selected>Minutos</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-center mt-4 mb-n2">
+                                                <button type="button" class="btn btn-primary btn-sm">Salvar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fim Card  -->
+                            <!-- Card  -->
+                            <div class="card">
+                                <div class="card-header bgColor" id="headingTree">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTree" aria-expanded="true" aria-controls="collapseTree">
+                                            Quantidade de Fotos
+                                        </button>
+                                    </h2>
+                                </div>
+    
+                                <div id="collapseTree" class="collapse show" aria-labelledby="headingTree" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-9">
+                                                        <p class="lead font-weight-bolder">
+                                                            Habilitar controle de quantidade de fotos?
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-3 text-right">                                                    
+                                                        <div class="custom-control custom-switch">
+                                                            <input type="checkbox" class="custom-control-input" id="customSwitch2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                                            <label class="custom-control-label" for="customSwitch2">Não / Sim</label>
+                                                        </div>                                                    
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="collapse" id="collapseExample">
+                                                            <div class="card card-body content-aux">
+                                                                <p class="lead text-center font-weight-bolder">
+                                                                    Parâmetros Auxiliares
+                                                                </p>
+                                                                <form>
+                                                                    <div class="form-row">
+                                                                        <div class="col-12 d-flex flex-wrap justify-content-around">
+                                                                            <div>
+                                                                                <label for="inputEmail4">Inicial</label>
+                                                                                <input type="number" class="form-control" id="inputEmail4">
+                                                                            </div>
+                                                                            <div>
+                                                                                <label for="inputPassword4">Complemento</label>
+                                                                                <input type="number" class="form-control" id="inputPassword4">
+                                                                            </div>
+                                                                            <div>
+                                                                                <label for="inputPassword5">Versão</label>
+                                                                                <input type="number" class="form-control" id="inputPassword5">
+                                                                            </div>                                                                                                                                            
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 pt-2">                                                                                                               
+                                                        <div id="alert" class="alert alert-success" style="display: none;" role="alert">
+                                                            A simple success alert—check it out!                                                        
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 text-right">                                                                                                                
+                                                        <div class="form-group">                                                            
+                                                            <button type="button" class="btn btn-primary btn-sm" id="btnSalvar">                                                                
+                                                                Salvar
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fim Card  -->
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <!--FIM PARAMETROS -->
+        <!-- HISTÓRICO -->
+        <div class="tab-pane fade p-3 pt-0" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+            <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Parâmetro</th>
+                    <th scope="col">Empresa</th>
+                    <th scope="col">Dt. Atualização</th>
+                    <th scope="col">Usuário</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Quantidade de Fotos</th>
+                    <td>Liberty</td>
+                    <td>06/07/2020 18:10</td>
+                    <td>Rodrigo Derkian</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Estimatica de Mecânica</th>
+                    <td>Liberty</td>
+                    <td>04/07/2020 18:10</td>
+                    <td>Fabio Souza</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Baremo Pintura CESVI</th>
+                    <td>Liberty</td>
+                    <td>02/07/2020 18:10</td>
+                    <td>Bruno Alves</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        <!--FIM HISTÓRICO -->        
+    </div>
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {                        
+            $("#btnSalvar").click(function showAlert() {                
+                $("#alert").toggle(1000)
+                            .delay(2000)
+                            .slideUp(1000);
+            });
+        });
+    </script>
+</body>
+</html>

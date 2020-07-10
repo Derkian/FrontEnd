@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Orcamentação</title>
+  </head>
+  <style>      
+  
+        .stepwizard-step p {
+            margin-top: 0px;
+            color:#666;
+        }
+        .stepwizard-row {
+            display: table-row;
+        }
+        .stepwizard {
+            display: table;
+            width: 100%;
+            position: relative;
+        }
+        .stepwizard-step button[disabled] {
+            opacity: 1 !important;
+            filter: alpha(opacity=100) !important;
+        }
+        .stepwizard .btn.disabled, .stepwizard .btn[disabled], .stepwizard fieldset[disabled] .btn {
+            opacity:1 !important;
+            color:#bbb;
+            background-color: #fff;
+            border-color: #ccc;
+        }
+        
+        .stepwizard-row:before {
+            top: 14px;
+            bottom: 0;
+            position: absolute;
+            content:" ";
+            width: 100%;
+            height: 1px;
+            background-color: #ccc;
+            z-index: 0;
+        }
+        .stepwizard-step {
+            display: table-cell;
+            text-align: center;
+            position: relative;
+        }
+        .btn-circle {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            padding: 6px 0;
+            font-size: 12px;
+            line-height: 1.428571429;
+            border-radius: 15px;
+        }
+
+    .toast-messages{        
+        width: 450px;                
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+        padding: 1rem 1rem 1rem 2.5rem;
+        z-index: 99;
+        margin: 11px;
+    }
+    .toast-messages-body{        
+        max-width: 450px;
+        max-height: 400px;
+        padding: 0 0 1rem 0;
+    }
+
+    .toast-messages-toolbar{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        padding-bottom: 10px;
+    }
+
+    .dropdown-footer{
+        border-top: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 0 0 4px 4px;
+        padding-top: 10px;
+    }
+
+  </style>
+  <body>
+  
+  <!-- Tab panes -->
+    <div class="row mx-auto" style="width: 80%;" >
+        <div class="col-10 text-center">
+            <button class="btn btn-primary">Alterar Veiculo</button>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalAction">Totais</button>
+            <button class="btn btn-primary" id="btnRelatorio" data-toggle="modal" data-target="#exampleModal">Relatório</button>
+            <button class="btn btn-primary" onclick="showInfos();">Parecer</button>            
+        </div>
+        <div class="col-2 text-right">
+            <button class="btn btn-primary" type="submit" onclick="validaForm();">Salvar</button>                        
+        </div>
+        <div class="col-12 text-center" style="position: relative;">            
+            <div class="toast-messages">                                
+                <!-- Flexbox container for aligning the toasts -->               
+                <div class="toast-messages-body overflow-auto">                    
+                    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">    
+                        <!-- Then put toasts within -->
+                        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header bg-primary text-white">                        
+                                <strong class="mr-auto">Aviso 1</strong>                        
+                                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="toast-body">
+                                TEXTO AVISO 1 TEXTO AVISO 1
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">                            
+                        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header bg-primary text-white">                        
+                                <strong class="mr-auto">AVISO 2</strong>                        
+                                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="toast-body">
+                                TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2
+                            </div>
+                        </div>                                            
+                    </div>
+
+                    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">                            
+                        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header bg-primary text-white">                        
+                                <strong class="mr-auto">AVISO 2</strong>                        
+                                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="toast-body">
+                                TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2
+                            </div>
+                        </div>                                            
+                    </div>
+
+                    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">                            
+                        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header bg-primary text-white">                        
+                                <strong class="mr-auto">AVISO 2</strong>                        
+                                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="toast-body">
+                                TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2
+                            </div>
+                        </div>                                            
+                    </div>
+
+                    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">                            
+                        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header bg-primary text-white">                        
+                                <strong class="mr-auto">AVISO 2</strong>                        
+                                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="toast-body">
+                                TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2
+                            </div>
+                        </div>                                            
+                    </div>
+
+                    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">                            
+                        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header bg-primary text-white">                        
+                                <strong class="mr-auto">AVISO 2</strong>                        
+                                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="toast-body">
+                                TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2 TEXTO AVISO 2
+                            </div>
+                        </div>                                            
+                    </div>
+
+                </div>
+                <div class="dropdown-footer text-center">
+                    <div class="row">
+                        <div class="col-12">
+                            <label>Tem certeza que deseja salvar?</label>
+
+                        </div>
+                        <div class="col-12">
+                            <button id="btnSalvarInfo" type="button" class="btn btn-outline-primary btn-sm">Salvar</button>
+                            <button id="btnVoltarInfo" type="button" class="btn btn-outline-danger btn-sm">Voltar</button>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-3">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link active d-flex justify-content-between" id="v-pills-home-tab" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                            Dados 
+                            <span class="badge badge-light invisible">3</span>                            
+                        </a>
+                        <a class="nav-link d-flex justify-content-between" id="v-pills-profile-tab" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+                            Orcamento
+                            <span class="badge badge-light invisible">2</span>                            
+                        </a>
+                        <a class="nav-link d-flex justify-content-between" id="v-pills-messages-tab" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+                            Aviso
+                            <span class="badge badge-light invisible">9</span>                            
+                        </a>
+                        <a class="nav-link d-flex justify-content-between" id="v-pills-settings-tab" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+                            Conclusao
+                            <span class="badge badge-light invisible">9</span>                            
+                        </a>
+                    </div>                    
+                </div>
+                <div class="col-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <form>
+                                <div class="form-row">
+                                  <div class="col-md-6 mb-3">
+                                    <label for="validationServer01">First name</label>
+                                    <input type="text" class="form-control " id="validationServer01" value="Mark" required>                                    
+                                  </div>
+                                  <div class="col-md-6 mb-3">
+                                    <label for="validationServer02">Last name</label>
+                                    <input type="text" class="form-control " id="validationServer02" required>                                    
+                                  </div>
+                                </div>
+                                <div class="form-row">
+                                  <div class="col-md-6 mb-3">
+                                    <label for="validationServer03">City</label>
+                                    <input type="text" class="form-control " id="validationServer03" required>                                    
+                                  </div>
+                                  <div class="col-md-3 mb-3">
+                                    <label for="validationServer04">State</label>
+                                    <select class="custom-select " id="validationServer04" required>
+                                      <option disabled value="">Choose...</option>
+                                      <option>Base água</option>
+                                    </select>                                    
+                                  </div>
+                                  <div class="col-md-3 mb-3">
+                                    <label for="validationServer05">Zip</label>
+                                    <input type="text" class="form-control" id="validationServer05" required>                                    
+                                  </div>
+                                </div>                                                                
+                              </form>                                                        
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                            <form>
+                                <div class="form-row">
+                                  <div class="col-md-6 mb-3">
+                                    <label for="validationServer01">First name</label>
+                                    <input type="text" class="form-control " id="validationServer01" value="Mark" required>                                    
+                                  </div>
+                                  <div class="col-md-6 mb-3">
+                                    <label for="validationServer02">Last name</label>
+                                    <input type="text" class="form-control " id="validationServer02" value="Otto" required>                                    
+                                  </div>
+                                </div>
+                                <div class="form-row">
+                                  <div class="col-md-6 mb-3">
+                                    <label for="validationServer03">City</label>
+                                    <input type="text" class="form-control " id="validationServer03" required>                                    
+                                  </div>
+                                  <div class="col-md-3 mb-3">
+                                    <label for="validationServer04">State</label>
+                                    <select class="custom-select " id="validationServer04" required>
+                                      <option disabled value="">Choose...</option>
+                                      <option>Base água</option>
+                                    </select>                                    
+                                  </div>
+                                  <div class="col-md-3 mb-3">
+                                    <label for="validationServer05">Zip</label>
+                                    <input type="text" class="form-control" id="validationServer05" required>                                    
+                                  </div>
+                                </div>                                                                
+                              </form>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+                        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>                                                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>            
+    <!-- Flexbox container for aligning the toasts -->
+
+    <!-- modal stepper -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Avisos</h5>            
+            </div>
+            <div class="modal-body">                
+                <div class="container">
+                    <div class="stepwizard">
+                        <div class="stepwizard-row setup-panel">
+                            <div class="stepwizard-step col-xs-3"> 
+                                <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
+                                <!-- <p><small>Shipper</small></p> -->
+                            </div>
+                            <div class="stepwizard-step col-xs-3"> 
+                                <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                                <!-- <p><small>Destination</small></p> -->
+                            </div>
+                            <div class="stepwizard-step col-xs-3"> 
+                                <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                                <!-- <p><small>Schedule</small></p> -->
+                            </div>
+                            <div class="stepwizard-step col-xs-3"> 
+                                <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                                <!-- <p><small>Cargo</small></p> -->
+                            </div>
+                            <div class="stepwizard-step col-xs-3"> 
+                                <a href="#step-5" type="button" class="btn btn-default btn-circle" disabled="disabled">5</a>
+                                <!-- <p><small>Cargo</small></p> -->
+                            </div>
+                            <div class="stepwizard-step col-xs-3"> 
+                                <a href="#step-6" type="button" class="btn btn-default btn-circle" disabled="disabled">6</a>
+                                <!-- <p><small>Cargo</small></p> -->
+                            </div>
+                            <div class="stepwizard-step col-xs-3"> 
+                                <a href="#step-7" type="button" class="btn btn-default btn-circle" disabled="disabled">7</a>
+                                <!-- <p><small>Cargo</small></p> -->
+                            </div>
+                            <div class="stepwizard-step col-xs-3"> 
+                                <a href="#step-8" type="button" class="btn btn-default btn-circle" disabled="disabled">8</a>
+                                <!-- <p><small>Cargo</small></p> -->
+                            </div>
+                            <div class="stepwizard-step col-xs-3"> 
+                                <a href="#step-9" type="button" class="btn btn-default btn-circle" disabled="disabled">9</a>
+                                <!-- <p><small>Cargo</small></p> -->
+                            </div>
+                            <div class="stepwizard-step col-xs-3"> 
+                                <a href="#step-10" type="button" class="btn btn-default btn-circle" disabled="disabled">10</a>
+                                <!-- <p><small>Cargo</small></p> -->
+                            </div>                            
+                        </div>
+                    </div>
+                    
+                    <form role="form" class="pt-4">
+                        <div class="panel panel-primary setup-content text-center" id="step-1">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-uppercase">TEXTO 1</h3>
+                            </div>
+                            <div class="panel-body text-right pt-4">
+                                <div class="form-group">                          
+                                </div>                    
+                                <button class="btn btn-primary nextBtn pull-right" type="button">Continuar</button>
+                                <button class="btn btn-danger pull-right" type="submit" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                        
+                        <div class="panel panel-primary setup-content text-center" id="step-2">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-uppercase">TEXTO 2</h3>
+                            </div>
+                            <div class="panel-body text-right pt-4">
+                                <div class="form-group">                          
+                                </div>                    
+                                <button class="btn btn-primary nextBtn pull-right" type="button">Continuar</button>
+                                <button class="btn btn-danger pull-right" type="submit" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                        
+                        <div class="panel panel-primary setup-content text-center" id="step-3">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-uppercase">TEXTO 3</h3>
+                            </div>
+                            <div class="panel-body text-right pt-4">
+                                <div class="form-group">                          
+                                </div>                    
+                                <button class="btn btn-primary nextBtn pull-right" type="button">Continuar</button>
+                                <button class="btn btn-danger pull-right" type="submit" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+            
+                        <div class="panel panel-primary setup-content text-center" id="step-4">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-uppercase">TEXTO 4</h3>
+                            </div>
+                            <div class="panel-body text-right pt-4">
+                                <div class="form-group">                          
+                                </div>                    
+                                <button class="btn btn-primary nextBtn pull-right" type="button">Continuar</button>
+                                <button class="btn btn-danger pull-right" type="submit" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+            
+                        <div class="panel panel-primary setup-content text-center" id="step-5">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-uppercase">TEXTO 5</h3>
+                            </div>
+                            <div class="panel-body text-right pt-4">
+                                <div class="form-group">                          
+                                </div>                    
+                                <button class="btn btn-primary nextBtn pull-right" type="button">Continuar</button>
+                                <button class="btn btn-danger pull-right" type="submit" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+            
+                        <div class="panel panel-primary setup-content text-center" id="step-6">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-uppercase">TEXTO 6</h3>
+                            </div>
+                            <div class="panel-body text-right pt-4">
+                                <div class="form-group">                          
+                                </div>                    
+                                <button class="btn btn-primary nextBtn pull-right" type="button">Continuar</button>
+                                <button class="btn btn-danger pull-right" type="submit" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+            
+                        <div class="panel panel-primary setup-content text-center" id="step-7">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-uppercase">TEXTO 7</h3>
+                            </div>
+                            <div class="panel-body text-right pt-4">
+                                <div class="form-group">                          
+                                </div>                    
+                                <button class="btn btn-primary nextBtn pull-right" type="button">Continuar</button>
+                                <button class="btn btn-danger pull-right" type="submit" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+            
+                        <div class="panel panel-primary setup-content text-center" id="step-8">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-uppercase">TEXTO 8</h3>
+                            </div>
+                            <div class="panel-body text-right pt-4">
+                                <div class="form-group">                          
+                                </div>                    
+                                <button class="btn btn-primary nextBtn pull-right" type="button">Continuar</button>
+                                <button class="btn btn-danger pull-right" type="submit" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+            
+                        <div class="panel panel-primary setup-content text-center" id="step-9">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-uppercase">TEXTO 9</h3>
+                            </div>
+                            <div class="panel-body text-right pt-4">
+                                <div class="form-group">                          
+                                </div>                    
+                                <button class="btn btn-primary nextBtn pull-right" type="button">Continuar</button>
+                                <button class="btn btn-danger pull-right" type="submit" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+            
+                        <!-- ULTIMO PASSO -->
+                        <div class="panel panel-primary setup-content text-center" id="step-10">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-uppercase">TEXTO 10</h3>
+                            </div>
+                            <div class="panel-body text-right pt-4">
+                                <div class="form-group">
+                                </div>                                
+                                <button class="btn btn-danger pull-right" type="submit" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                        <!-- FIM - ULTIMO PASSO -->
+                    </form>
+                </div>
+            </div>            
+        </div>
+        </div>
+    </div>
+
+
+
+    <!-- MODAL AÇÃO  -->
+    <!-- Button trigger modal -->
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalAction" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabeAction" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabeAction">Ação</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            Deseja fazer alguma coisa?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Confirmar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+    <!-- Button trigger modal -->
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+
+        showInfos = function(){
+            $('.toast').toast({autohide : false});
+            $('.toast').toast('show');
+
+            $('.toast-messages').fadeIn(2000);
+        }
+        
+        validaForm = function(){           
+
+            $("#v-pills-tabContent > div")                
+                .each(function(index, elementDiv) {
+                    $(elementDiv).find("input[type=text], select")
+                    .each(function(index, element){
+                        element.classList.remove('is-valid');
+                        element.classList.remove('is-invalid');
+                        if($(element).val()) { 
+                            element.classList.add('is-valid');
+                            let link = $(elementDiv).attr('aria-labelledby');
+                            let elementLink = document.getElementById(link);
+                            $(elementLink).find('span').removeClass('invisible')
+                        }
+                        else{ 
+                            element.classList.add('is-invalid');                                                
+                        };
+                    });
+                });
+
+                if(!$("#v-pills-tabContent div[class*='active']").find("input[type='text'],select").hasClass('is-invalid')){
+                    if(Math.random() >= 0.5){
+                        showInfos();
+                    }
+                    else{
+                        $('#exampleModalAction').modal();
+                    }
+                }
+        };
+
+        $('#btnSalvarInfo').on('click', function(){
+            $('#exampleModalAction').modal();            
+        });
+
+        $('#btnVoltarInfo').on('click', function(){
+            $('.toast-messages').css('display','none');
+        });
+
+        $('#v-pills-tab a').on('click', function (e) {              
+            e.preventDefault()
+            $(this).tab('show')              
+        });
+
+        $("#btnRelatorio").click(function () {
+
+            var navListItems = $('div.setup-panel div a'),
+                allWells = $('.setup-content'),
+                allNextBtn = $('.nextBtn');
+
+            allWells.hide();
+
+            navListItems.click(function (e) {
+                e.preventDefault();
+                var $target = $($(this).attr('href')),
+                    $item = $(this);
+
+                if (!$item.hasClass('disabled')) {
+                    navListItems.removeClass('btn-success').addClass('btn-default');
+                    $item.addClass('btn-success');
+                    allWells.hide();
+                    $target.show();
+                    $target.find('input:eq(0)').focus();
+                }
+            });
+
+            allNextBtn.click(function () {
+                var curStep = $(this).closest(".setup-content"),
+                    curStepBtn = curStep.attr("id"),
+                    nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a");
+                    nextStepWizard.removeAttr('disabled').trigger('click');
+            });
+
+            $('div.setup-panel div a.btn-success').trigger('click');
+        });
+    </script>
+  </body>
+</html>
